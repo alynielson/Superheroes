@@ -18,7 +18,6 @@ namespace Superheroes.Controllers
 
         public ActionResult CreateHero()
         {
-            Models.ApplicationDbContext context = new Models.ApplicationDbContext();
             return View();
         }
 
@@ -38,6 +37,15 @@ namespace Superheroes.Controllers
         {
             Models.ApplicationDbContext context = new Models.ApplicationDbContext();
             return View(context.Superhero.SingleOrDefault(s => id == s.Id));
+        }
+
+        [HttpPost]
+        public ActionResult CreateHero(Models.Superhero superhero)
+        {
+            Models.ApplicationDbContext context = new Models.ApplicationDbContext();
+            context.Superhero.Add(superhero);
+            context.SaveChanges();
+            return RedirectToAction("Index");
         }
     }
 }
