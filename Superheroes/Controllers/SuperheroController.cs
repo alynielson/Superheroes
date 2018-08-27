@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 
+
 namespace Superheroes.Controllers
 {
     public class SuperheroController : Controller
@@ -11,7 +12,8 @@ namespace Superheroes.Controllers
         // GET: Superhero
         public ActionResult Index()
         {
-            return View();
+            Models.ApplicationDbContext context = new Models.ApplicationDbContext();
+            return View(context.Superhero);
         }
 
         public ActionResult CreateHero()
@@ -29,9 +31,10 @@ namespace Superheroes.Controllers
             return View();
         }
 
-        public ActionResult ViewDetails()
+        public ActionResult ViewDetails(int? id)
         {
-            return View();
+            Models.ApplicationDbContext context = new Models.ApplicationDbContext();
+            return View(context.Superhero.Where(s => id == s.Id));
         }
     }
 }
