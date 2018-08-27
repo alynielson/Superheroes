@@ -18,23 +18,26 @@ namespace Superheroes.Controllers
 
         public ActionResult CreateHero()
         {
+            Models.ApplicationDbContext context = new Models.ApplicationDbContext();
             return View();
         }
 
-        public ActionResult EditHero()
+        public ActionResult EditHero(int? id)
         {
-            return View();
+            Models.ApplicationDbContext context = new Models.ApplicationDbContext();
+            return View(context.Superhero.SingleOrDefault(s => id == s.Id));
         }
 
-        public ActionResult DeleteHero()
+        public ActionResult DeleteHero(int? id)
         {
-            return View();
+            Models.ApplicationDbContext context = new Models.ApplicationDbContext();
+            return View(context.Superhero.SingleOrDefault(s => id == s.Id));
         }
 
         public ActionResult ViewDetails(int? id)
         {
             Models.ApplicationDbContext context = new Models.ApplicationDbContext();
-            return View(context.Superhero.Where(s => id == s.Id));
+            return View(context.Superhero.SingleOrDefault(s => id == s.Id));
         }
     }
 }
