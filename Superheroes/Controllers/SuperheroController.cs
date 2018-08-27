@@ -23,5 +23,10 @@ namespace Superheroes.Controllers
         {
             return View();
         }
+
+        public ActionResult DeleteHero()
+        {
+            return View();
+        }
     }
 }
