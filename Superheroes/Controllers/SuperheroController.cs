@@ -47,5 +47,15 @@ namespace Superheroes.Controllers
             context.SaveChanges();
             return RedirectToAction("Index");
         }
+
+        [HttpPost]
+        public ActionResult DeleteHero(Models.Superhero superhero)
+        {
+            Models.ApplicationDbContext context = new Models.ApplicationDbContext();
+            context.Superhero.Attach(superhero);
+            context.Superhero.Remove(superhero);
+            context.SaveChanges();
+            return RedirectToAction("Index");
+        }
     }
 }
