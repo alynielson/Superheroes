@@ -28,5 +28,10 @@ namespace Superheroes.Controllers
         {
             return View();
         }
+
+        public ActionResult ViewDetails()
+        {
+            return View();
+        }
     }
 }
